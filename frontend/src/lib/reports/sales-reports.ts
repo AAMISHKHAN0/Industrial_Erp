@@ -1,6 +1,7 @@
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import { fmt, formatDate, formatDateTime } from "./stores-reports";
+import { applyPdfBrandingFooter } from "./export-utils";
 import { getStoredCompany } from "../company";
 
 /**
@@ -116,7 +117,7 @@ export function generateSalesInvoicePdf(invoice: any): jsPDF {
   doc.text(`PKR ${fmt(invoice.outstandingAmount)}`, pageWidth - 14, finalY + 44, { align: "right" });
 
   // Signature Block
-  const sigY = Math.max(finalY + 65, 240);
+  const sigY = Math.max(finalY + 65, 236);
   doc.setDrawColor(150);
   doc.line(14, sigY, 70, sigY);
   doc.text("Prepared By (Accounts)", 14, sigY + 5);
@@ -124,6 +125,7 @@ export function generateSalesInvoicePdf(invoice: any): jsPDF {
   doc.line(pageWidth - 70, sigY, pageWidth - 14, sigY);
   doc.text("Authorized Signature & Stamp", pageWidth - 70, sigY + 5);
 
+  applyPdfBrandingFooter(doc);
   return doc;
 }
 
@@ -227,13 +229,14 @@ export function generateCustomerReceiptPdf(receipt: any): jsPDF {
   doc.text(`PKR ${fmt(receipt.totalSettled)}`, pageWidth - 14, finalY + 24, { align: "right" });
 
   // Signature
-  const sigY = Math.max(finalY + 50, 240);
+  const sigY = Math.max(finalY + 50, 236);
   doc.line(14, sigY, 70, sigY);
   doc.text("Received & Posted By", 14, sigY + 5);
 
   doc.line(pageWidth - 70, sigY, pageWidth - 14, sigY);
   doc.text("Customer Acknowledgment", pageWidth - 70, sigY + 5);
 
+  applyPdfBrandingFooter(doc);
   return doc;
 }
 
@@ -328,6 +331,7 @@ export function generateCustomerStatementPdf(statement: any): jsPDF {
     doc.text("✔ Reconciled 100% with open invoices and GL AR control account", 14, finalY + 32);
   }
 
+  applyPdfBrandingFooter(doc);
   return doc;
 }
 
@@ -397,5 +401,6 @@ export function generateWageSlipPdf(wageRun: any, line: any): jsPDF {
     doc.text(`Disbursed On: ${formatDateTime(wageRun.disbursedAt)}`, 14, finalY + 18);
   }
 
+  applyPdfBrandingFooter(doc);
   return doc;
 }

@@ -6,8 +6,8 @@
 | **Desktop Installer** | [Industrial ERP Setup 1.0.6.exe](file:///C:/Users/Aamishkhan/Desktop/Industrial%20ERP%20Setup%201.0.6.exe) |
 | **Repo Build Artifact** | [Industrial ERP Setup 1.0.6.exe](file:///d:/Textile-Erp-master%20(1)/Textile-Erp-master%20(1)/Textile-Erp-master/desktop/dist/Industrial%20ERP%20Setup%201.0.6.exe) |
 | **Unpacked App Binary** | [Industrial ERP.exe](file:///d:/Textile-Erp-master%20(1)/Textile-Erp-master%20(1)/Textile-Erp-master/desktop/dist/win-unpacked/Industrial%20ERP.exe) |
-| **Installer Size** | `278,449,730` bytes (`265.55 MB`) |
-| **SHA-256** | `2252D075C3793D9BDCD28EA0A3B7227313A6E525EE8E304FDEDFC38F4C840AEE` |
+| **Installer Size** | `278,964,069` bytes (`266.04 MB`) |
+| **SHA-256** | `372A9368B5C583808A3601C1B3A9159E9046A219E2DBAEED152036BC994F93E8` |
 
 ---
 
@@ -50,6 +50,7 @@
 - **Nested Quick-Add Auto-Save Fix ([quick-create-dialog.tsx](file:///d:/Textile-Erp-master%20(1)/Textile-Erp-master%20(1)/Textile-Erp-master/frontend/src/components/shared/quick-create-dialog.tsx))**: Eliminated React Portal synthetic `onSubmit` event bubbling across stacked modals by removing inner `<form>` elements inside `QuickCreateDialog`, switching the save action to a `type="button"` handler with `e.stopPropagation()` on `Enter` keydown and `DialogContent` `onSubmit`.
 - **Full-Page Field Parity (`QuickCreateDialog`)**: Expanded all 19 Quick-Add entity forms (`vendor`, `customer`, `item`, `category`, `unit`, `warehouse`, `branch`, `department`, `designation`, `employee`, `account`, `bom`, `demandNote`, `quotation`, `purchaseOrder`, `productionOrder`, `salesOrder`, `payrollPeriod`, `payhead`) with every field from their dedicated pages plus a collapsible `More details (all optional fields)` section.
 - **Auto-Generated Sequential Codes & Empty-State Prompts**: All modules auto-generate sequential document/master codes (`VND-`, `CUS-`, `ITM-`, `PO-`, `SO-`, `PRD-`, `DEM-`, `QUO-`, etc.), and empty `EntitySelect` dropdowns show contextual `"Add your <Entity>"` buttons that create inline and auto-select the newly created record.
+- **Tasteful Brand & Website Attribution ([powered-by-footer.tsx](file:///d:/Textile-Erp-master%20(1)/Textile-Erp-master%20(1)/Textile-Erp-master/frontend/src/components/shared/powered-by-footer.tsx), [export-utils.ts](file:///d:/Textile-Erp-master%20(1)/Textile-Erp-master%20(1)/Textile-Erp-master/frontend/src/lib/reports/export-utils.ts))**: Added quiet enterprise `"Powered by Digitalerena · digitalerena.com"` footers across `AppShell` (every dashboard/module page), `/login`, `/setup`, `/forgot-password`, `desktop/splash.html`, `ReportDialog`, `Sales Invoice` & `Customer Receipt` modals, Excel/CSV exports, and every exported PDF (invoices, receipts, statements, wage slips, GRNs, demand notes, material issues, stock register, and report exports via `applyPdfBrandingFooter()`). Added external-link `setWindowOpenHandler` in [main.js](file:///d:/Textile-Erp-master%20(1)/Textile-Erp-master%20(1)/Textile-Erp-master/desktop/main.js) so clicking `digitalerena.com` opens in the user's browser cleanly.
 
 ---
 

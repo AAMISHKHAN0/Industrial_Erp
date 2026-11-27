@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { DLogo } from "@/components/ui/logo";
+import { PoweredByFooter } from "@/components/shared/powered-by-footer";
 import { toast } from "sonner";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -191,6 +192,7 @@ export default function SetupPage() {
           <p className="mt-8 font-mono text-xs text-muted-foreground">
             Industrial ERP · System setup wizard
           </p>
+          <PoweredByFooter compact className="mt-2 justify-start" />
         </div>
       </div>
 
@@ -353,6 +355,7 @@ export default function SetupPage() {
           <p className="mt-8 text-center font-mono text-xs text-muted-foreground">
             One-time bootstrap · Irreversible once completed
           </p>
+          <PoweredByFooter compact className="mt-2" />
         </div>
       </div>
     </div>

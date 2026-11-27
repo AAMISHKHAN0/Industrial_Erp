@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { PoweredByFooter } from "@/components/shared/powered-by-footer";
 import {
   Dialog,
   DialogContent,
@@ -1523,6 +1524,7 @@ export default function CustomerReceiptsPage() {
                     </div>
                   </div>
                 </div>
+                <PoweredByFooter compact className="pt-1" />
               </div>
             )}
 

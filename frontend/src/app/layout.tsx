@@ -7,8 +7,8 @@ import "./globals.css";
 import { Providers } from "@/providers/providers";
 
 export const metadata: Metadata = {
-  title: "Industrial ERP | Digital Erena",
-  description: "Enterprise Resource Planning for Industrial Manufacturing",
+  title: "Industrial ERP | Digitalerena",
+  description: "Enterprise Resource Planning for Industrial Manufacturing — Powered by Digitalerena (digitalerena.com)",
   icons: {
     icon: "/favicon.svg",
   },

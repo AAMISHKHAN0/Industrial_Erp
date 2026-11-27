@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { Topbar } from "@/components/layouts/topbar";
 import { Breadcrumb } from "@/components/layouts/breadcrumb";
 import { ErrorBoundary } from "@/components/shared/error-boundary";
+import { PoweredByFooter } from "@/components/shared/powered-by-footer";
 
 const Sidebar = dynamic(() => import("@/components/layouts/sidebar").then((m) => m.Sidebar), {
   ssr: false,
@@ -46,16 +47,20 @@ export function AppShell({ children, title }: AppShellProps) {
           onMobileClose={closeMobile}
         />
         <div
-          className={cn("transition-all duration-300 ease-in-out", collapsed ? "md:ml-16" : "md:ml-64")}
+          className={cn(
+            "flex min-h-screen flex-col transition-all duration-300 ease-in-out",
+            collapsed ? "md:ml-16" : "md:ml-64",
+          )}
         >
           <Topbar onMenuClick={openMobile} />
-          <main className="p-4 md:p-6">
+          <main className="flex-1 p-4 md:p-6">
             <Breadcrumb />
             {title && (
               <h1 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 capitalize">{title}</h1>
             )}
             <ErrorBoundary>{children}</ErrorBoundary>
           </main>
+          <PoweredByFooter showProductLabel />
         </div>
       </div>
     </AppShellContext.Provider>

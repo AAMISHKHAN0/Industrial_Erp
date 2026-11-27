@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { DLogo } from "@/components/ui/logo";
+import { PoweredByFooter } from "@/components/shared/powered-by-footer";
 import { getApiBase } from "@/lib/api/client";
 import { toast } from "sonner";
 import Link from "next/link";
@@ -300,6 +301,9 @@ export default function ForgotPasswordPage() {
               </div>
             </form>
           )}
+          <div className="mt-6 border-t border-border pt-4">
+            <PoweredByFooter compact />
+          </div>
         </CardContent>
       </Card>
     </div>

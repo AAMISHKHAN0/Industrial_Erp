@@ -133,7 +133,7 @@ export default function GeneralLedgerPage() {
     ]);
     const csvContent =
       "data:text/csv;charset=utf-8," +
-      [headers.join(","), ...rows.map((r) => r.join(","))].join("\n");
+      [headers.join(","), ...rows.map((r) => r.join(",")), "", '"Powered by Digitalerena","https://digitalerena.com"'].join("\n");
     const link = document.createElement("a");
     link.setAttribute("href", encodeURI(csvContent));
     link.setAttribute("download", `general_ledger_${new Date().toISOString().split("T")[0]}.csv`);

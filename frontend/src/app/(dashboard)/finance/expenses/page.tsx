@@ -289,7 +289,7 @@ export default function SundryExpensesPage() {
     ]);
     const csvContent =
       "data:text/csv;charset=utf-8," +
-      [headers.join(","), ...rows.map((r) => r.join(","))].join("\n");
+      [headers.join(","), ...rows.map((r) => r.join(",")), "", '"Powered by Digitalerena","https://digitalerena.com"'].join("\n");
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);

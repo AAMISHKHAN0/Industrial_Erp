@@ -509,7 +509,7 @@ export function Sidebar({
                 <span className="truncate text-xs text-sidebar-foreground/60">
                   {companyName && companyName !== "Industrial ERP"
                     ? "Industrial ERP"
-                    : "Digital Erena"}
+                    : "Digitalerena"}
                 </span>
               </div>
             </Link>

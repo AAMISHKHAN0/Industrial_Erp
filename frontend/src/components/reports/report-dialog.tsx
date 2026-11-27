@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Loader2, FileDown, FileText } from "lucide-react";
 import { exportExcel, exportPdf, type ExportColumn } from "@/lib/reports/export-utils";
+import { PoweredByFooter } from "@/components/shared/powered-by-footer";
 
 interface Props {
   open: boolean;
@@ -81,14 +82,17 @@ export function ReportDialog({ open, onClose, title, description, fetchFn, colum
             </div>
           )}
         </div>
-        <DialogFooter className="px-4 pb-4 pt-2 gap-2">
-          <Button variant="outline" size="sm" disabled={data.length === 0} onClick={() => exportExcel(data, columns, filename)}>
-            <FileDown className="h-4 w-4 mr-2" /> Excel
-          </Button>
-          <Button variant="outline" size="sm" disabled={data.length === 0} onClick={() => exportPdf(title, data, columns, filename)}>
-            <FileText className="h-4 w-4 mr-2" /> PDF
-          </Button>
-          <Button variant="outline" size="sm" onClick={onClose}>Close</Button>
+        <DialogFooter className="px-4 pb-4 pt-2 flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-2">
+          <PoweredByFooter compact className="sm:justify-start" />
+          <div className="flex items-center justify-end gap-2">
+            <Button variant="outline" size="sm" disabled={data.length === 0} onClick={() => exportExcel(data, columns, filename)}>
+              <FileDown className="h-4 w-4 mr-2" /> Excel
+            </Button>
+            <Button variant="outline" size="sm" disabled={data.length === 0} onClick={() => exportPdf(title, data, columns, filename)}>
+              <FileText className="h-4 w-4 mr-2" /> PDF
+            </Button>
+            <Button variant="outline" size="sm" onClick={onClose}>Close</Button>
+          </div>
         </DialogFooter>
       </DialogContent>
     </Dialog>

@@ -1323,7 +1323,7 @@ function checkBootstrapRequired(port) {
 function createMainWindow(frontendPort = 3000, initialPath = '') {
   const windowTitle = isFreshTest
     ? 'Industrial ERP — Fresh Test'
-    : 'Industrial ERP — Digital Erena (Offline Edition)';
+    : 'Industrial ERP — Digitalerena (Offline Edition)';
 
   mainWindow = new BrowserWindow({
     width: 1440,
@@ -1353,6 +1353,16 @@ function createMainWindow(frontendPort = 3000, initialPath = '') {
   const targetUrl = `http://127.0.0.1:${frontendPort}${initialPath}`;
   console.log(`[Desktop] Loading main window URL: ${targetUrl}`);
   mainWindow.loadURL(targetUrl);
+
+  mainWindow.webContents.setWindowOpenHandler(({ url }) => {
+    if (typeof url === 'string' && /^https?:\/\//i.test(url) && !url.startsWith(`http://127.0.0.1:${frontendPort}`)) {
+      shell.openExternal(url).catch((err) => {
+        console.warn('[Desktop] Failed to open external URL:', err?.message || err);
+      });
+      return { action: 'deny' };
+    }
+    return { action: 'allow' };
+  });
 
   mainWindow.once('ready-to-show', () => {
     if (splashWindow && !splashWindow.isDestroyed()) {

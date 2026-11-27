@@ -1,6 +1,7 @@
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import { getStoredCompany } from "../company";
+import { applyPdfBrandingFooter } from "./export-utils";
 
 export function formatDateTime(val: string | Date | null | undefined): string {
   if (!val) return "-";
@@ -203,7 +204,7 @@ export function generateGrnSlip(grn: any): jsPDF {
   }
 
   // Signatures
-  const sigY = Math.min(finalY + 32, 275);
+  const sigY = Math.min(finalY + 32, 268);
   doc.setFontSize(8);
   doc.setFont("helvetica", "bold");
   doc.line(14, sigY, 55, sigY);
@@ -215,6 +216,7 @@ export function generateGrnSlip(grn: any): jsPDF {
   doc.line(135, sigY, 185, sigY);
   doc.text("Approved By (Stores In-Charge)", 135, sigY + 5);
 
+  applyPdfBrandingFooter(doc);
   if (typeof window !== "undefined") {
     doc.save(`GRN-${grn.grnNumber || "slip"}.pdf`);
   }
@@ -343,7 +345,7 @@ export function generateDemandNoteSlip(demandNote: any): jsPDF {
     doc.text(`Notes: ${demandNote.notes}`, 14, finalY + 8);
   }
 
-  const sigY = Math.min(finalY + 30, 275);
+  const sigY = Math.min(finalY + 30, 268);
   doc.setFontSize(8);
   doc.setFont("helvetica", "bold");
   doc.line(14, sigY, 55, sigY);
@@ -355,6 +357,7 @@ export function generateDemandNoteSlip(demandNote: any): jsPDF {
   doc.line(140, sigY, 185, sigY);
   doc.text("Stores Issuing Officer", 140, sigY + 5);
 
+  applyPdfBrandingFooter(doc);
   if (typeof window !== "undefined") {
     doc.save(`DemandNote-${demandNote.demandNumber || "slip"}.pdf`);
   }
@@ -478,7 +481,7 @@ export function generateMaterialIssueSlip(issue: any): jsPDF {
   const finalY = (doc as any).lastAutoTable?.finalY || y + 50;
 
   // Signatures
-  const sigY = Math.min(finalY + 30, 275);
+  const sigY = Math.min(finalY + 30, 268);
   doc.setFontSize(8);
   doc.setFont("helvetica", "bold");
   doc.line(14, sigY, 55, sigY);
@@ -490,6 +493,7 @@ export function generateMaterialIssueSlip(issue: any): jsPDF {
   doc.line(140, sigY, 185, sigY);
   doc.text("Verified / Cost Accounts", 140, sigY + 5);
 
+  applyPdfBrandingFooter(doc);
   if (typeof window !== "undefined") {
     doc.save(`MaterialIssue-${issue.issueNumber || "slip"}.pdf`);
   }
@@ -562,6 +566,7 @@ export function generateStockRegisterPdf(registerData: any, filters?: any): jsPD
 
   autoTable(doc, {
     startY: 33,
+    margin: { bottom: 20 },
     head: [[
       "#",
       "Item Code",
@@ -596,6 +601,7 @@ export function generateStockRegisterPdf(registerData: any, filters?: any): jsPD
     },
   });
 
+  applyPdfBrandingFooter(doc);
   if (typeof window !== "undefined") {
     doc.save(`StockRegister-${new Date().toISOString().slice(0, 10)}.pdf`);
   }

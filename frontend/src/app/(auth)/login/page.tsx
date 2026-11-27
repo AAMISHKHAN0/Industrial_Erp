@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { DLogo } from "@/components/ui/logo";
+import { PoweredByFooter } from "@/components/shared/powered-by-footer";
 import { toast } from "sonner";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -377,10 +378,11 @@ export default function LoginPage() {
           )}
 
           {/* Footer note */}
-          <div className="border-t border-border pt-4 text-center">
+          <div className="space-y-1.5 border-t border-border pt-4 text-center">
             <p className="font-mono text-xs text-muted-foreground">
               Industrial ERP · Offline standalone edition
             </p>
+            <PoweredByFooter compact />
           </div>
         </div>
       </main>

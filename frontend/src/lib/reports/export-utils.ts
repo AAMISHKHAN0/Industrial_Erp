@@ -37,12 +37,49 @@ export function exportExcel(
     [],
   ]);
   XLSX.utils.sheet_add_json(ws, rows, { origin: "A4" } as any);
+  const footerRowIdx = 4 + rows.length + 2;
+  XLSX.utils.sheet_add_aoa(
+    ws,
+    [["Powered by Digitalerena", "https://digitalerena.com"]],
+    { origin: `A${footerRowIdx}` },
+  );
 
   const wb = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb, ws, "Report");
   const cols = columns.map((c) => ({ wch: Math.max(c.header.length, 14) }));
   ws["!cols"] = cols;
   XLSX.writeFile(wb, `${filename}.xlsx`);
+}
+
+export function applyPdfBrandingFooter(doc: jsPDF): void {
+  const totalPages = doc.getNumberOfPages();
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
+  const lineY = pageHeight - 13;
+  const textY = pageHeight - 8;
+  const prefix = "Powered by Digitalerena  ·  ";
+
+  for (let i = 1; i <= totalPages; i++) {
+    doc.setPage(i);
+    doc.setDrawColor(226, 232, 240);
+    doc.setLineWidth(0.2);
+    doc.line(14, lineY, pageWidth - 14, lineY);
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(7.5);
+    doc.setTextColor(100, 116, 139);
+    doc.text(prefix, 14, textY);
+
+    const prefixWidth = doc.getTextWidth(prefix);
+    doc.setTextColor(37, 99, 235);
+    doc.textWithLink("digitalerena.com", 14 + prefixWidth, textY, {
+      url: "https://digitalerena.com",
+    });
+
+    doc.setTextColor(100, 116, 139);
+    doc.text(`Page ${i} of ${totalPages}`, pageWidth - 14, textY, { align: "right" });
+  }
+  doc.setTextColor(0, 0, 0);
 }
 
 export function exportPdf(
@@ -91,10 +128,12 @@ export function exportPdf(
     head,
     body,
     startY: 34,
+    margin: { bottom: 20 },
     styles: { fontSize: 8, cellPadding: 2 },
     headStyles: { fillColor: [59, 130, 246], textColor: 255, fontStyle: "bold" },
     alternateRowStyles: { fillColor: [245, 247, 250] },
   });
+  applyPdfBrandingFooter(doc);
   doc.save(`${filename}.pdf`);
 }
 
