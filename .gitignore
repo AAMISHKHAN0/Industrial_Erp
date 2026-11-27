@@ -1,0 +1,50 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.*
+
+# build output
+dist/
+build/
+out/
+.next/
+*.tsbuildinfo
+
+# env / secrets (keep your real values in .env.local)
+.env
+.env.*
+!.env.example
+
+# logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# os / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# desktop packaged binaries, embedded runtime & local test artifacts
+*.exe
+*.msi
+*.tar.gz
+*.mp4
+desktop/embedded/
+desktop/dist/
+desktop/.desktop_session.json
+test_sandbox_rc3/
+unslop/
+scripts/*.png
+scripts/*.mp4
+scripts/recorder/
+frontend/test-results/
+frontend/playwright-report/
+*.db_credentials.json
+app_stderr.txt
+app_stdout.txt
+stderr.txt
+stdout.txt
+bg_dump_test_*.sql

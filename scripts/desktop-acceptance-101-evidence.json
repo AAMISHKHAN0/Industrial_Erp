@@ -1,0 +1,96 @@
+{
+  "installer": {
+    "path": "D:\\Textile-Erp-master (1)\\Textile-Erp-master (1)\\Textile-Erp-master\\desktop\\dist\\Industrial ERP Setup 1.0.1.exe",
+    "size": 268957498,
+    "sha256": "80C3B1713D8A1286203A83339BF942C128CE8E130C392A27A7A5DEF304045145",
+    "verified": true
+  },
+  "shortcut": {
+    "path": "C:\\Users\\Aamishkhan\\Desktop\\Industrial ERP.lnk",
+    "target": "C:\\Users\\Aamishkhan\\AppData\\Local\\Programs\\Industrial ERP\\Industrial ERP.exe",
+    "workingDir": "C:\\Users\\Aamishkhan\\AppData\\Local\\Programs\\Industrial ERP",
+    "verified": true
+  },
+  "freshSetup": {
+    "bootstrapStatus": {
+      "success": true,
+      "message": "Operation completed successfully",
+      "data": {
+        "initialized": false,
+        "canBootstrap": true,
+        "userCount": 0
+      },
+      "errors": null
+    },
+    "ownerPromptVerified": true,
+    "setupPageVerified": true,
+    "completedUrl": "http://localhost:3000/dashboard",
+    "verified": true
+  },
+  "existingDatabase": {
+    "database": "textile_erp",
+    "vouchersCount": 50036,
+    "itemsCount": 10005,
+    "journalCount": 50040,
+    "usersCount": 8,
+    "sampleVouchers": [
+      {
+        "id": "fe55cda8-dc84-46a9-aae7-8b49a9e617bb",
+        "voucherNumber": "VCH-SALES_INVOICE-20261121-0002-NLJX",
+        "voucherType": "SALES_INVOICE",
+        "businessDate": "2026-11-21T08:17:40.661Z",
+        "status": "POSTED"
+      },
+      {
+        "id": "36d42383-3051-45ca-a209-b5d1593e4189",
+        "voucherNumber": "VCH-WAGE_ACCRUAL-20261121-0003-NLOD",
+        "voucherType": "WAGE_ACCRUAL",
+        "businessDate": "2026-11-21T08:17:40.850Z",
+        "status": "POSTED"
+      },
+      {
+        "id": "a5ab4f72-6a48-43b5-a4ab-917580fd1e30",
+        "voucherNumber": "VCH-WAGE_DISBURSEMENT-20261121-0004-NLQK",
+        "voucherType": "WAGE_DISBURSEMENT",
+        "businessDate": "2026-11-21T08:17:40.928Z",
+        "status": "POSTED"
+      }
+    ],
+    "intact": true
+  },
+  "splashAndTimings": {
+    "spawnMs": 1229,
+    "splashDisplayMs": 3557,
+    "postgresReadyMs": 52453,
+    "backendReadyMs": 52453,
+    "frontendReadyMs": 52453,
+    "splashResponsive": true,
+    "title": "Industrial ERP"
+  },
+  "roleManagement": {
+    "ownerAuthenticated": true,
+    "roleManagementLoaded": true,
+    "newStaffEmail": "staff_1795331832621@industrialerp.local",
+    "staffAddedToDatabase": true,
+    "staffVisibleInUi": false,
+    "verified": true
+  },
+  "rebootSimulation": {
+    "gracefulShutdownSuccess": true,
+    "relaunchTotalMs": 8293,
+    "relaunchHealthy": true,
+    "relaunchDashUrl": "http://localhost:3000/dashboard",
+    "verified": true
+  },
+  "screenshots": {
+    "icon": "D:\\Textile-Erp-master (1)\\Textile-Erp-master (1)\\Textile-Erp-master\\scripts\\evidence-icon.png",
+    "splash": "D:\\Textile-Erp-master (1)\\Textile-Erp-master (1)\\Textile-Erp-master\\scripts\\evidence-splash-screen.png",
+    "accountSetup": "D:\\Textile-Erp-master (1)\\Textile-Erp-master (1)\\Textile-Erp-master\\scripts\\evidence-account-setup.png",
+    "roleManagement": "D:\\Textile-Erp-master (1)\\Textile-Erp-master (1)\\Textile-Erp-master\\scripts\\evidence-role-management.png"
+  },
+  "startupLog": {
+    "path": "D:\\Textile-Erp-master (1)\\Textile-Erp-master (1)\\Textile-Erp-master\\scripts\\evidence-startup.log",
+    "tail": "] LOG:  database system is shut down\r\n2026-11-22 10:07:41.992 PKT [14380] LOG:  starting PostgreSQL 16.15, compiled by Visual C++ build 1944, 64-bit\r\n2026-11-22 10:07:41.996 PKT [14380] LOG:  listening on IPv6 address \"::1\", port 5433\r\n2026-11-22 10:07:41.996 PKT [14380] LOG:  listening on IPv4 address \"127.0.0.1\", port 5433\r\n2026-11-22 10:07:42.052 PKT [22252] LOG:  database system was shut down at 2026-11-22 10:07:24 PKT\n2026-11-22 10:07:42.082 PKT [14380] LOG:  database system is ready to accept connections\r\n2026-11-22 10:07:45.699 PKT [13696] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.\r\n\t\n2026-11-22 10:07:45.795 PKT [14380] LOG:  received fast shutdown request\r\n2026-11-22 10:07:45.796 PKT [14380] LOG:  aborting any active transactions\r\n2026-11-22 10:07:45.802 PKT [14380] LOG:  background worker \"logical replication launcher\" (PID 16424) exited with exit code 1\r\n2026-11-22 10:07:45.803 PKT [14408] LOG:  shutting down\n2026-11-22 10:07:45.803 PKT [14408] LOG:  checkpoint starting: shutdown immediate\n2026-11-22 10:07:45.818 PKT [14408] LOG:  checkpoint complete: wrote 2 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.004 s, sync=0.004 s, total=0.016 s; sync files=3, longest=0.002 s, average=0.002 s; distance=0 kB, estimate=0 kB; lsn=0/1E6F0218, redo lsn=0/1E6F0218\n2026-11-22 10:07:45.827 PKT [14380] LOG:  database system is shut down\r\n2026-11-22 10:29:46.436 PKT [20636] LOG:  starting PostgreSQL 16.15, compiled by Visual C++ build 1944, 64-bit\r\n2026-11-22 10:29:46.448 PKT [20636] LOG:  listening on IPv6 address \"::1\", port 5433\r\n2026-11-22 10:29:46.449 PKT [20636] LOG:  listening on IPv4 address \"127.0.0.1\", port 5433\r\n2026-11-22 10:29:46.628 PKT [14128] LOG:  database system was shut down at 2026-11-22 10:07:45 PKT\n2026-11-22 10:29:46.791 PKT [20636] LOG:  database system is ready to accept connections\r\n\n================================================================================\n\n",
+    "captured": true
+  }
+}

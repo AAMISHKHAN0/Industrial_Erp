@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Opening Industrial ERP...</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", Helvetica, Arial, sans-serif;
+      background-color: #ffffff;
+      color: #111113;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+      -webkit-app-region: drag;
+      border: 1px solid #e5e5e7;
+      position: relative;
+    }
+
+    .container {
+      text-align: center;
+      width: 100%;
+      padding: 0 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 11px;
+      background: #2563eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.22);
+    }
+
+    .logo-box svg {
+      width: 24px;
+      height: 24px;
+      color: #ffffff;
+    }
+
+    .title-group {
+      text-align: left;
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #111113;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      font-size: 12px;
+      color: #71717a;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    .progress-track {
+      width: 260px;
+      height: 4px;
+      background: #e4e4e7;
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+      margin-top: 4px;
+    }
+
+    .progress-bar {
+      position: absolute;
+      left: -40%;
+      width: 44%;
+      height: 100%;
+      background: #2563eb;
+      border-radius: 999px;
+      animation: loading 1.3s infinite ease-in-out;
+    }
+
+    .progress-bar.error {
+      animation: none;
+      left: 0;
+      width: 100%;
+      background: #dc2626;
+    }
+
+    @keyframes loading {
+      0% { left: -45%; }
+      50% { left: 45%; }
+      100% { left: 105%; }
+    }
+
+    .status {
+      font-size: 12.5px;
+      color: #52525b;
+      font-weight: 500;
+      min-height: 18px;
+      transition: color 0.2s ease;
+      max-width: 380px;
+      line-height: 1.45;
+    }
+
+    .status.error {
+      color: #dc2626;
+      font-weight: 600;
+    }
+
+    .actions {
+      display: none;
+      gap: 8px;
+      margin-top: 2px;
+      -webkit-app-region: no-drag;
+    }
+
+    .btn {
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid #d4d4d8;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      border-color: #2563eb;
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+    }
+
+    .btn-secondary {
+      background: #fafafa;
+      color: #18181b;
+    }
+
+    .btn-secondary:hover {
+      background: #f4f4f5;
+    }
+
+    .version-tag {
+      position: absolute;
+      bottom: 12px;
+      right: 16px;
+      font-size: 11px;
+      color: #a1a1aa;
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="brand-row">
+      <div class="logo-box" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+          <path d="M2 17l10 5 10-5"></path>
+          <path d="M2 12l10 5 10-5"></path>
+        </svg>
+      </div>
+      <div class="title-group">
+        <div class="title">Industrial ERP</div>
+        <div class="subtitle">Operations &amp; Accounting Suite</div>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="status" id="statusMessage">Preparing your workspace...</div>
+
+    <div class="actions" id="actionsRow">
+      <button type="button" class="btn btn-primary" onclick="handleRetry()">Retry</button>
+      <button type="button" class="btn btn-secondary" onclick="handleViewLogs()">View Logs</button>
+      <button type="button" class="btn btn-secondary" onclick="handleExit()">Exit</button>
+    </div>
+  </div>
+
+  <div class="version-tag">v1.0.6</div>
+
+  <script>
+    const defaultSteps = [
+      'Preparing your workspace...',
+      'Connecting to database...',
+      'Opening Industrial ERP...'
+    ];
+    let stepIndex = 0;
+    const statusEl = document.getElementById('statusMessage');
+    const progressBar = document.getElementById('progressBar');
+    const actionsRow = document.getElementById('actionsRow');
+    let hasError = false;
+
+    function setStatus(msg, isErr = false) {
+      if (!statusEl) return;
+      statusEl.textContent = msg;
+      hasError = isErr;
+      if (isErr) {
+        statusEl.classList.add('error');
+        if (progressBar) progressBar.classList.add('error');
+        if (actionsRow) actionsRow.style.display = 'flex';
+      } else {
+        statusEl.classList.remove('error');
+        if (progressBar) progressBar.classList.remove('error');
+        if (actionsRow) actionsRow.style.display = 'none';
+      }
+    }
+
+    const stepInterval = setInterval(() => {
+      if (hasError) {
+        clearInterval(stepInterval);
+        return;
+      }
+      if (stepIndex < defaultSteps.length - 1) {
+        stepIndex++;
+        setStatus(defaultSteps[stepIndex]);
+      } else {
+        clearInterval(stepInterval);
+      }
+    }, 2400);
+
+    if (window.desktopBridge && window.desktopBridge.onStatusUpdate) {
+      window.desktopBridge.onStatusUpdate((msg) => {
+        clearInterval(stepInterval);
+        const text = String(msg || '');
+        const lower = text.toLowerCase();
+        const isErr = lower.includes('error') || lower.includes('fail') || lower.includes('fatal') || lower.includes('crash');
+
+        if (!isErr) {
+          if (lower.includes('cleaning') || lower.includes('environment')) {
+            setStatus('Preparing your workspace...');
+          } else if (lower.includes('database') || lower.includes('cluster') || lower.includes('migration')) {
+            setStatus('Connecting to database...');
+          } else if (lower.includes('launching') || lower.includes('services') || lower.includes('interface')) {
+            setStatus('Opening Industrial ERP...');
+          } else {
+            setStatus(text);
+          }
+        } else {
+          setStatus(text, true);
+        }
+      });
+    }
+
+    function handleRetry() {
+      setStatus('Preparing your workspace...', false);
+      stepIndex = 0;
+      if (window.desktopBridge && typeof window.desktopBridge.retryStartup === 'function') {
+        window.desktopBridge.retryStartup();
+      } else {
+        window.location.reload();
+      }
+    }
+
+    function handleViewLogs() {
+      if (window.desktopBridge && typeof window.desktopBridge.openLogs === 'function') {
+        window.desktopBridge.openLogs();
+      }
+    }
+
+    function handleExit() {
+      if (window.desktopBridge && typeof window.desktopBridge.exitApp === 'function') {
+        window.desktopBridge.exitApp();
+      } else {
+        window.close();
+      }
+    }
+  </script>
+</body>
+</html>

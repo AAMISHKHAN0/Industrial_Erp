@@ -1,0 +1,59 @@
+{
+  "name": "industrial-erp-desktop",
+  "version": "1.0.6",
+  "description": "Industrial ERP Offline Desktop Shell for Digital Erena",
+  "author": "Digital Erena <contact@digitalerena.com>",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "pack": "npx electron-builder --dir",
+    "dist": "npx electron-builder && node -e \"require('fs').copyFileSync('dist/Industrial ERP Setup 1.0.6.exe', 'dist/Setup.exe'); require('fs').copyFileSync('dist/Industrial ERP Setup 1.0.6.exe', 'dist/Industrial ERP Setup.exe')\""
+  },
+  "devDependencies": {
+    "electron": "45.4.1",
+    "electron-builder": "^26.18.0"
+  },
+  "build": {
+    "appId": "com.digitalerena.industrialerp",
+    "productName": "Industrial ERP",
+    "electronVersion": "45.4.1",
+    "electronDist": "node_modules/electron/dist",
+    "win": {
+      "icon": "icon.ico",
+      "artifactName": "Industrial ERP Setup 1.0.6.exe",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "extraResources": [
+      {
+        "from": "embedded",
+        "to": "embedded"
+      }
+    ],
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "installerIcon": "icon.ico",
+      "uninstallerIcon": "icon.ico",
+      "installerHeaderIcon": "icon.ico",
+      "warningsAsErrors": false,
+      "include": "build/installer.nsh"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "splash.html",
+      "icon.ico",
+      "package.json"
+    ]
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "installer": {
+    "path": "D:\\Textile-Erp-master (1)\\Textile-Erp-master (1)\\Textile-Erp-master\\desktop\\dist\\Industrial ERP Setup.exe",
+    "size": 268898416,
+    "sha256": "14E8C4DC75B9A3D9910458B808F72D879C8AA72E8414E23D103637F7A8047605",
+    "verified": true
+  },
+  "shortcut": {
+    "path": "C:\\Users\\Aamishkhan\\Desktop\\Industrial ERP.lnk",
+    "target": "C:\\Users\\Aamishkhan\\AppData\\Local\\Programs\\Industrial ERP\\Industrial ERP.exe",
+    "workingDir": "C:\\Users\\Aamishkhan\\AppData\\Local\\Programs\\Industrial ERP",
+    "verified": true
+  },
+  "startupTimings": {
+    "processSpawnMs": 1037,
+    "splashDisplayMs": 2879,
+    "postgresReadyMs": 2886,
+    "backendReadyMs": 7084,
+    "frontendReadyMs": 7093,
+    "totalStartupMs": 7093,
+    "splashResponsiveNoHang": true
+  },
+  "resilience": {},
+  "auth": {
+    "loginUrl": "http://localhost:3000/login",
+    "dashboardUrl": "http://localhost:3000/dashboard",
+    "authenticated": true,
+    "reload401Count": 0,
+    "externalCallsBlocked": 0,
+    "sessionPersistenceVerified": true
+  },
+  "dataPreservation": {
+    "targetDatabase": "textile_erp",
+    "vouchersCount": 50036,
+    "journalEntriesCount": 50040,
+    "itemsCount": 10005,
+    "partiesCount": 0,
+    "usersCount": 8,
+    "sampleVouchers": [
+      {
+        "id": "fe55cda8-dc84-46a9-aae7-8b49a9e617bb",
+        "voucherNumber": "VCH-SALES_INVOICE-20261121-0002-NLJX",
+        "voucherType": "SALES_INVOICE",
+        "businessDate": "2026-11-21T08:17:40.661Z",
+        "status": "POSTED"
+      },
+      {
+        "id": "36d42383-3051-45ca-a209-b5d1593e4189",
+        "voucherNumber": "VCH-WAGE_ACCRUAL-20261121-0003-NLOD",
+        "voucherType": "WAGE_ACCRUAL",
+        "businessDate": "2026-11-21T08:17:40.850Z",
+        "status": "POSTED"
+      },
+      {
+        "id": "a5ab4f72-6a48-43b5-a4ab-917580fd1e30",
+        "voucherNumber": "VCH-WAGE_DISBURSEMENT-20261121-0004-NLQK",
+        "voucherType": "WAGE_DISBURSEMENT",
+        "businessDate": "2026-11-21T08:17:40.928Z",
+        "status": "POSTED"
+      },
+      {
+        "id": "4a9f1970-ef56-45dd-a28b-db515334aa40",
+        "voucherNumber": "VCH-STATUTORY_PAYMENT-20261121-0005-NLSJ",
+        "voucherType": "STATUTORY_PAYMENT",
+        "businessDate": "2026-11-21T08:17:41.003Z",
+        "status": "POSTED"
+      },
+      {
+        "id": "2993c1e5-7758-4f47-8bf3-589bb09976a0",
+        "voucherNumber": "VCH-GRN-GRN-FLOW-L1-MWQFQB9B",
+        "voucherType": "GRN",
+        "businessDate": "2026-11-21T08:19:47.477Z",
+        "status": "POSTED"
+      }
+    ],
+    "preserved": true
+  },
+  "rebootSimulation": {
+    "gracefulShutdownSuccess": true,
+    "relaunchTotalMs": 7919,
+    "relaunchBackendHealthy": true,
+    "relaunchFrontendHealthy": true,
+    "relaunchDashUrl": "http://localhost:3000/dashboard",
+    "relaunchVerified": true
+  },
+  "logs": {
+    "startupLogPath": "C:\\Users\\Aamishkhan\\AppData\\Roaming\\industrial-erp-desktop\\logs\\startup.log",
+    "postgresLogPath": "C:\\Users\\Aamishkhan\\AppData\\Roaming\\industrial-erp-desktop\\logs\\postgres.log",
+    "startupLogTail": "] LOG:  database system is shut down\r\n2026-11-22 10:07:41.992 PKT [14380] LOG:  starting PostgreSQL 16.15, compiled by Visual C++ build 1944, 64-bit\r\n2026-11-22 10:07:41.996 PKT [14380] LOG:  listening on IPv6 address \"::1\", port 5433\r\n2026-11-22 10:07:41.996 PKT [14380] LOG:  listening on IPv4 address \"127.0.0.1\", port 5433\r\n2026-11-22 10:07:42.052 PKT [22252] LOG:  database system was shut down at 2026-11-22 10:07:24 PKT\n2026-11-22 10:07:42.082 PKT [14380] LOG:  database system is ready to accept connections\r\n2026-11-22 10:07:45.699 PKT [13696] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.\r\n\t\n2026-11-22 10:07:45.795 PKT [14380] LOG:  received fast shutdown request\r\n2026-11-22 10:07:45.796 PKT [14380] LOG:  aborting any active transactions\r\n2026-11-22 10:07:45.802 PKT [14380] LOG:  background worker \"logical replication launcher\" (PID 16424) exited with exit code 1\r\n2026-11-22 10:07:45.803 PKT [14408] LOG:  shutting down\n2026-11-22 10:07:45.803 PKT [14408] LOG:  checkpoint starting: shutdown immediate\n2026-11-22 10:07:45.818 PKT [14408] LOG:  checkpoint complete: wrote 2 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.004 s, sync=0.004 s, total=0.016 s; sync files=3, longest=0.002 s, average=0.002 s; distance=0 kB, estimate=0 kB; lsn=0/1E6F0218, redo lsn=0/1E6F0218\n2026-11-22 10:07:45.827 PKT [14380] LOG:  database system is shut down\r\n2026-11-22 10:29:46.436 PKT [20636] LOG:  starting PostgreSQL 16.15, compiled by Visual C++ build 1944, 64-bit\r\n2026-11-22 10:29:46.448 PKT [20636] LOG:  listening on IPv6 address \"::1\", port 5433\r\n2026-11-22 10:29:46.449 PKT [20636] LOG:  listening on IPv4 address \"127.0.0.1\", port 5433\r\n2026-11-22 10:29:46.628 PKT [14128] LOG:  database system was shut down at 2026-11-22 10:07:45 PKT\n2026-11-22 10:29:46.791 PKT [20636] LOG:  database system is ready to accept connections\r\n\n================================================================================\n\n",
+    "postgresLogTail": " recycled; write=0.015 s, sync=0.014 s, total=0.037 s; sync files=18, longest=0.002 s, average=0.001 s; distance=178 kB, estimate=178 kB; lsn=0/1E915A50, redo lsn=0/1E915A50\n2026-11-22 10:44:41.527 PKT [6404] LOG:  database system is ready to accept connections\r\n2026-11-22 10:45:13.014 PKT [19860] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.\r\n\t\n2026-11-22 10:45:13.015 PKT [22084] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.\r\n\t\n2026-11-22 10:45:17.445 PKT [6404] LOG:  received immediate shutdown request\r\n2026-11-22 10:45:17.462 PKT [6404] LOG:  database system is shut down\r\n2026-11-22 10:45:19.306 PKT [8444] LOG:  starting PostgreSQL 16.15, compiled by Visual C++ build 1944, 64-bit\r\n2026-11-22 10:45:19.311 PKT [8444] LOG:  listening on IPv6 address \"::1\", port 5433\r\n2026-11-22 10:45:19.312 PKT [8444] LOG:  listening on IPv4 address \"127.0.0.1\", port 5433\r\n2026-11-22 10:45:19.372 PKT [23460] LOG:  database system was interrupted; last known up at 2026-11-22 10:44:41 PKT\n2026-11-22 10:45:20.325 PKT [23460] LOG:  database system was not properly shut down; automatic recovery in progress\n2026-11-22 10:45:20.332 PKT [23460] LOG:  redo starts at 0/1E915AC8\n2026-11-22 10:45:20.348 PKT [23460] LOG:  invalid record length at 0/1E9435B0: expected at least 24, got 0\n2026-11-22 10:45:20.348 PKT [23460] LOG:  redo done at 0/1E943578 system usage: CPU: user: 0.00 s, system: 0.01 s, elapsed: 0.01 s\n2026-11-22 10:45:20.358 PKT [484] LOG:  checkpoint starting: end-of-recovery immediate wait\n2026-11-22 10:45:20.393 PKT [484] LOG:  checkpoint complete: wrote 32 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.016 s, sync=0.013 s, total=0.037 s; sync files=19, longest=0.002 s, average=0.001 s; distance=182 kB, estimate=182 kB; lsn=0/1E9435B0, redo lsn=0/1E9435B0\n2026-11-22 10:45:20.431 PKT [8444] LOG:  database system is ready to accept connections\r\n"
+  }
+}

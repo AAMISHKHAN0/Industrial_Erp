@@ -1,0 +1,10 @@
+[
+  {
+    "flow": "Authentication & 401 Elimination",
+    "page": "/login -> /dashboard",
+    "voucher": "SESSION-OK",
+    "expected": "Session synced to cookies + localStorage; zero 401 errors on load or reload",
+    "actual": "100% 200 OK across protected endpoints; zero 401 errors",
+    "status": "PASS"
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "flow": "Authentication & 401 Elimination",
+    "page": "/login -> /dashboard",
+    "voucher": "SESSION-VALID",
+    "expected": "Session credential synced to cookie + localStorage; zero 401 errors on load or reload",
+    "actual": "Zero 401 errors detected across all protected requests; 100% 200 OK",
+    "status": "PASS"
+  },
+  {
+    "flow": "Stock: Intake & FIFO Valuation",
+    "page": "/purchase/goods-receiving -> /inventory/material-issue -> /inventory/stock-ledger",
+    "voucher": "ISS-MWQJPS3V",
+    "expected": "Receive 10@100 & 10@120. Issue 12 units. Register shows 8 units balance @ PKR 960 (Issue cost PKR 1,240).",
+    "actual": "Stock intake verified; 12 units issued (10@100 + 2@120 = PKR 1,240); remaining 8 units @ 120 = PKR 960.00 valuation verified",
+    "status": "PASS"
+  },
+  {
+    "flow": "Sales: Invoice & Partial Receipt",
+    "page": "/sales/invoices -> /sales/receipts -> /finance/ledgers",
+    "voucher": "INV-1000 / CR-REC-001",
+    "expected": "Post PKR 1,000 invoice. Record PKR 600 receipt. Customer Ledger shows PKR 400.00 outstanding.",
+    "actual": "Invoice PKR 1,000 posted with GL voucher; PKR 600 receipt settled via Cheque; Customer Ledger displays exactly PKR 400.00 outstanding",
+    "status": "PASS"
+  },
+  {
+    "flow": "Payroll: Daily Wages & Disbursement",
+    "page": "/hr/wages -> /finance/ledgers",
+    "voucher": "WAGE-RUN-001",
+    "expected": "Enter 3 days @ PKR 1,000 = PKR 3,000. Accrue GL liability, disburse via Bank, post to Employee Ledger.",
+    "actual": "Gross/Net PKR 3,000 calculated and accrued to GL; disbursement posted; voucher entries confirmed in Employee Ledger",
+    "status": "PASS"
+  },
+  {
+    "flow": "Accounts: Petty Cash & Payment Idempotency",
+    "page": "/finance/expenses & /finance/payments",
+    "voucher": "EXP-001 / PAY-001",
+    "expected": "Post petty cash PKR 500. Post outgoing payment PKR 5,000. Double-clicking Post creates only one voucher.",
+    "actual": "Sundry expense PKR 500 posted; outgoing payment processed with idempotency guard producing strictly one voucher",
+    "status": "PASS"
+  },
+  {
+    "flow": "Persistence & Dashboard Telemetry",
+    "page": "/dashboard",
+    "voucher": "TELEMETRY-SYNC",
+    "expected": "Sign out and sign back in. All vouchers persist. Dashboard metrics reflect posted stock, receivables (PKR 400), and payables.",
+    "actual": "Session restored cleanly; dashboard live KPIs reflect posted stock valuation, open customer receivables (PKR 400.00), and payables",
+    "status": "PASS"
+  }
+]
